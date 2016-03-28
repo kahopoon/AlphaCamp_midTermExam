@@ -8,21 +8,39 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var movieWebView: UIWebView!
+    @IBOutlet var activity: UIActivityIndicatorView!
+    @IBOutlet weak var loadingLabel: UILabel!
+    
     var responseURL:String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        responseURL = "https://movie.yahoo-leisure.hk/movie/details/" + responseURL
         
+        self.navigationController!.navigationBar.translucent = false
+        
+        responseURL = "https://movie.yahoo-leisure.hk/movie/details/" + responseURL
         let request = NSURLRequest(URL: NSURL(string: responseURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!)
         
         movieWebView.loadRequest(request)
-        self.navigationController!.navigationBar.translucent = false
+        movieWebView.delegate = self
+        loadingLabel.hidden = true   
     }
     
+    func webViewDidStartLoad(webView: UIWebView) {
+        activity.hidden = false
+        activity.startAnimating()
+        loadingLabel.hidden = false
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        activity.hidden = true
+        activity.stopAnimating()
+        loadingLabel.hidden = true
+    }
+
     override func viewWillAppear(animated: Bool) {
     }
 }

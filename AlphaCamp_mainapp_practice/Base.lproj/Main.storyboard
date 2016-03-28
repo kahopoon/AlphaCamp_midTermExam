@@ -127,16 +127,35 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
+                            <activityIndicatorView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ffU-K2-zsw">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="color" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="等等啦。。。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPK-WV-Tvs">
+                                <rect key="frame" x="249" y="264" width="102" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xvV-aH-Yjr" firstAttribute="height" secondItem="tNr-u5-8q2" secondAttribute="height" id="7K3-W6-PEe"/>
                             <constraint firstItem="xvV-aH-Yjr" firstAttribute="width" secondItem="tNr-u5-8q2" secondAttribute="width" id="ENL-dk-UHo"/>
+                            <constraint firstItem="SPK-WV-Tvs" firstAttribute="top" secondItem="dg3-53-CKY" secondAttribute="bottom" constant="200" id="Flp-sd-RSc"/>
                             <constraint firstItem="xvV-aH-Yjr" firstAttribute="centerX" secondItem="tNr-u5-8q2" secondAttribute="centerX" id="HYQ-wa-C0p"/>
+                            <constraint firstItem="SPK-WV-Tvs" firstAttribute="centerX" secondItem="tNr-u5-8q2" secondAttribute="centerX" id="IpN-jX-ILM"/>
+                            <constraint firstItem="ffU-K2-zsw" firstAttribute="width" secondItem="tNr-u5-8q2" secondAttribute="width" id="JOA-sX-l5V"/>
+                            <constraint firstItem="ffU-K2-zsw" firstAttribute="height" secondItem="tNr-u5-8q2" secondAttribute="height" id="ZN8-DT-Iih"/>
                             <constraint firstItem="xvV-aH-Yjr" firstAttribute="centerY" secondItem="tNr-u5-8q2" secondAttribute="centerY" id="aXP-G6-g0g"/>
+                            <constraint firstItem="ffU-K2-zsw" firstAttribute="centerX" secondItem="tNr-u5-8q2" secondAttribute="centerX" id="fEv-tN-tvc"/>
+                            <constraint firstItem="ffU-K2-zsw" firstAttribute="centerY" secondItem="tNr-u5-8q2" secondAttribute="centerY" id="xMg-FN-WHc"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activity" destination="ffU-K2-zsw" id="3NJ-Le-wTh"/>
+                        <outlet property="loadingLabel" destination="SPK-WV-Tvs" id="U1j-dI-iW3"/>
                         <outlet property="movieWebView" destination="xvV-aH-Yjr" id="NVd-Ey-NTp"/>
                     </connections>
                 </viewController>
