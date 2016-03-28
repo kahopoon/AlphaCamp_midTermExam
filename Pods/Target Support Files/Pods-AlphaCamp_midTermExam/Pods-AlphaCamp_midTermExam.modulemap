@@ -1,0 +1,6 @@
+framework module Pods_AlphaCamp_midTermExam {
+  umbrella header "Pods-AlphaCamp_midTermExam-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-AlphaCamp_movieapp_practice.xcscheme</key>
+		<key>Pods-AlphaCamp_midTermExam.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>BE3DAED05D308C134C5E587ADEC4DE57</key>
+		<key>1241481535751111CA649462B11D0056</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DF268D37C28736F01B4BD615E5F7C4C1</key>
+		<key>915A396774AADB339DC78AA0ADEC2CB2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

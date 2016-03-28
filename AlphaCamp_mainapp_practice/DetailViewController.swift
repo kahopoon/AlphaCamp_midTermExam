@@ -1,46 +1,37 @@
 //
 //  DetailViewController.swift
-//  AlphaCamp_mainapp_practice
+//  AlphaCamp_movieapp_practice
 //
-//  Created by Ka Ho on 25/3/2016.
+//  Created by Ka Ho on 28/3/2016.
 //  Copyright © 2016 Ka Ho. All rights reserved.
 //
 
 import UIKit
 
-class DetailViewController: UIViewController, UIWebViewDelegate {
+class DetailViewController: UIViewController {
     
-    @IBOutlet weak var movieWebView: UIWebView!
-    @IBOutlet var activity: UIActivityIndicatorView!
-    @IBOutlet weak var loadingLabel: UILabel!
+    @IBOutlet weak var coverImage: UIImageView!
+    @IBOutlet weak var movieDescription: UITextView!
     
-    var responseURL:String!
-
+    var imageID: String!
+    var descriptionText: String!
+    var detailsURL: String!
+    var movieName: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController!.navigationBar.translucent = false
-        
-        responseURL = "https://movie.yahoo-leisure.hk/movie/details/" + responseURL
-        let request = NSURLRequest(URL: NSURL(string: responseURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!)!)
-        
-        movieWebView.loadRequest(request)
-        movieWebView.delegate = self
-        loadingLabel.hidden = true   
+        // Do any additional setup after loading the view, typically from a nib.
+        self.navigationItem.title = movieName
+        let photoResource = NSData(contentsOfURL: NSURL(string: "https://movie.yahoo-leisure.hk/assets/poster/" + imageID + ".jpg")!)
+        coverImage.image = UIImage(data: photoResource!)
+        movieDescription.text = descriptionText
     }
     
-    func webViewDidStartLoad(webView: UIWebView) {
-        activity.hidden = false
-        activity.startAnimating()
-        loadingLabel.hidden = false
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showWeb" {
+            let controller = segue.destinationViewController as! WebViewController
+            controller.responseURL = detailsURL
+        }
     }
     
-    func webViewDidFinishLoad(webView: UIWebView) {
-        activity.hidden = true
-        activity.stopAnimating()
-        loadingLabel.hidden = true
-    }
-
-    override func viewWillAppear(animated: Bool) {
-    }
 }

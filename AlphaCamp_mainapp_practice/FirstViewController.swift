@@ -16,8 +16,6 @@ class FirstViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let courses:AllCourse = AllCourse()
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -27,7 +25,6 @@ class FirstViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieTableViewCell
         
         // Configure the cell...
@@ -43,14 +40,16 @@ class FirstViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showWeb" {
+        if segue.identifier == "showDetails" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let currentData : Dictionary = self.rawData[indexPath.row]
-                let url_parameter = currentData["url"]! + "-" + currentData["name"]!
                 let controller = segue.destinationViewController as! DetailViewController
-                controller.responseURL = url_parameter
+                
+                controller.imageID = currentData["cover"]
+                controller.descriptionText = currentData["description"]
+                controller.detailsURL = currentData["url"]! + "-" + currentData["name"]!
+                controller.movieName = currentData["name"]
             }
         }
     }
@@ -59,7 +58,7 @@ class FirstViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tableView.dataSource = self
-        self.navigationItem.title = "Today's Movie"
+        self.navigationItem.title = "本週新片"
         self.automaticallyAdjustsScrollViewInsets = false
         
         do {
@@ -76,8 +75,8 @@ class FirstViewController: UIViewController, UITableViewDataSource {
         guard let results = object["results"] as? [[String: AnyObject]] else { return }
         
         for result in results {
-            guard let name = result["name"] as? String, let url = result["url"] as? String, let cover =  result["cover"] as? String, let director = result["director"] as? String, let cast = result["cast"] as? String, let duration = result["duration"] as? String else { break }
-            rawData.append(["name":name, "url":url, "cover":cover, "director":director, "cast":cast, "duration":duration])
+            guard let name = result["name"] as? String, let url = result["url"] as? String, let cover =  result["cover"] as? String, let director = result["director"] as? String, let cast = result["cast"] as? String, let duration = result["duration"] as? String, let description = result["description"] as? String else { break }
+            rawData.append(["name":name, "url":url, "cover":cover, "director":director, "cast":cast, "duration":duration, "description":description])
         }
     }
     
