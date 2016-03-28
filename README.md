@@ -1,5 +1,7 @@
 # AlphaCamp_midTermExam
 
+**json data are grep from yahoo hk movie by little python script, api: https://github.com/kahopoon/AlphaCamp_getMovieAPI**  
+
 ## app icon, launch screen
 ![Alt text](screenshots/home_screen.png?raw=true "home screen")
 ![Alt text](screenshots/launch_screen.png?raw=true "launch screen")
