@@ -14,6 +14,7 @@
 ![Alt text](screenshots/details_screen2.png?raw=true "details screen2")
 
 ## webview screen
+![Alt text](screenshots/webview_loading.png?raw=true "webview loading screen")
 ![Alt text](screenshots/web_screen.png?raw=true "web screen")
 
 ## signature screen, with input screen
