@@ -22,6 +22,7 @@
 ![Alt text](screenshots/sign_empty_error.png?raw=true "sign empty error screen")
 ![Alt text](screenshots/sign_exceed_error.png?raw=true "sign exceed error screen")
 
+## sorting practice
 ```swift
 func sortArray(array1:[Int], array2:[Int]) -> [Int] {
     //combine to collection set so as to remove duplicates
